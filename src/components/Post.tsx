@@ -1,17 +1,22 @@
 import styles from "./Post.module.css"
 import { Comment } from "./Comment"
 import { Avatar } from "./Avatar"
-interface PostProps {
+import { format, formatDistanceToNow } from "date-fns";
+import PT from "date-fns/locale/pt"
+export interface PostProps {
+    id?:number,
     author: {
-        avatarURL:string;
+        avatarUrl:string;
         name:string;
         role:string
-    }
-    content: string[],
+    },
+    content: string[]|string,
     publishedAt: Date;
 }
-
 export const Post: React.FC<PostProps> = ({ author, content, publishedAt }) => {
+    const publishedDateFormat = format(publishedAt, "dd 'de' LLLL 'às' HH':'mm'h'",{locale:PT})
+    const publishedDateTime = format(publishedAt, "MM/dd/yyyy HH':'mm")
+    const publishedDateRelatedFromNow = formatDistanceToNow(publishedAt, {addSuffix:true, locale:PT})
     return (
         <div className={styles.wrapper}>
             <article>
@@ -19,7 +24,7 @@ export const Post: React.FC<PostProps> = ({ author, content, publishedAt }) => {
                     <div className={styles.author}>
                         <Avatar
                             hasBorder={true}
-                            src={author.avatarURL}//`https://avatars.githubusercontent.com/u/61621625?v=4`
+                            src={author.avatarUrl}
                         />
                         <div>
                             <strong>
@@ -30,26 +35,14 @@ export const Post: React.FC<PostProps> = ({ author, content, publishedAt }) => {
                             </span>
                         </div>
                     </div>
-                    <time title="07 de fevereiro às 10:10h" dateTime="2023-02-07 10:10">
-                    {publishedAt.getDate()}
+                    <time title={publishedDateFormat} dateTime={publishedDateTime}>
+                    {publishedDateRelatedFromNow}
                     </time>
                 </header>
                 <div className={styles.content}>
-                    {/* <p>
-                        Fala galeraa 👋
-                    </p>
-                    <p>
-                        Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀
-                    </p>
-                    <p>
-                        👉<a href="#"> &nbsp; jane.design/doctorcare</a>
-                    </p>
-                    <p>
-                        <a href="#">#novoprojeto&nbsp; </a>
-                        <a href="#">#nlw &nbsp;</a>
-                        <a href="#">#rocketseat</a>
-                    </p> */}
-                    {content}
+                    {
+                    content instanceof Array ? content.concat().join(""):content
+                }
                 </div>
 
                 <form className={styles.commentForm}>
