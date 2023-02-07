@@ -1,7 +1,6 @@
 import React from 'react';
 
 import styles from './Sidebar.module.css';
-import user1 from '../assets/user-1.svg';
 import profileBackground from '../assets/profile-background.svg';
 
 export const Sidebar: React.FC = () => {
@@ -19,6 +18,7 @@ export const Sidebar: React.FC = () => {
             </div>
             <footer>
                 <a href="#">
+                    
                     Editar seu perfil
                 </a>
             </footer>
