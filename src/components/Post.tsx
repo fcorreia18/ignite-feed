@@ -10,7 +10,10 @@ export interface PostProps {
         name:string;
         role:string
     },
-    content: string[]|string,
+    content: {
+        type:string,
+        content:string;
+    }[]
     publishedAt: Date;
 }
 export const Post: React.FC<PostProps> = ({ author, content, publishedAt }) => {
@@ -41,7 +44,9 @@ export const Post: React.FC<PostProps> = ({ author, content, publishedAt }) => {
                 </header>
                 <div className={styles.content}>
                     {
-                    content instanceof Array ? content.concat().join(""):content
+                    content.map((line)=>{
+                        return line.type ==="paragraph"? <p>{line.content}</p> : <a href="#"> {line.content} </a>
+                    })
                 }
                 </div>
 
