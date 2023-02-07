@@ -9,7 +9,10 @@ export const Sidebar: React.FC = () => {
         <aside className={styles.sidebar}>
             <img src={profileBackground} alt="profile background image" className={styles.cover} />
             <div className={styles.profile} >
-                <Avatar src={`https://avatars.githubusercontent.com/u/61621625?v=4`}/>
+                <Avatar 
+                    hasBorder={true}
+                    src={`https://avatars.githubusercontent.com/u/61621625?v=4`}
+                />
                 <strong>
                     Francisco
                 </strong>

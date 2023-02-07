@@ -1,5 +1,6 @@
 import styles from "./Post.module.css"
 import {Comment} from "./Comment"
+import { Avatar } from "./Avatar"
 interface PostProps {
     author: string
     content: string
@@ -11,10 +12,9 @@ export const Post: React.FC<PostProps> = ({ author, content }) => {
             <article>
                 <header className={styles.header}>
                     <div className={styles.author}>
-                        <img
+                        <Avatar
+                            hasBorder={true}
                             src={`https://avatars.githubusercontent.com/u/61621625?v=4`}
-                            alt="user profile picture"
-                            className={styles.avatar}
                         />
                         <div>
                             <strong>
