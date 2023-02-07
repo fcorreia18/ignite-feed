@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { PencilLine } from "phosphor-react";
 import styles from './Sidebar.module.css';
 import profileBackground from '../assets/profile-background.svg';
 
@@ -18,7 +18,7 @@ export const Sidebar: React.FC = () => {
             </div>
             <footer>
                 <a href="#">
-                    
+                    <PencilLine height={30} width={20}/>
                     Editar seu perfil
                 </a>
             </footer>

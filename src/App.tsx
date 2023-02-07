@@ -9,7 +9,7 @@ function App() {
       <Header/>
      <div className={styles.wrapper}>
         <Sidebar/>
-      <main style={{backgroundColor:"red"}}>
+      <main >
       <Post
         author="Francisco Correia"
         content="um post de Francisco"
