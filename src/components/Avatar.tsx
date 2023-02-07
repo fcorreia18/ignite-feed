@@ -5,12 +5,11 @@ type Avatar = {
     src:string;
     hasBorder:boolean;
 }
-export const Avatar: React.FC<Avatar> = (props) => {
+export const Avatar: React.FC<Avatar> = ({hasBorder=true, src}) => {
   return (
-    props.hasBorder ?
-    <img src={props.src} alt="user profile picture" className={styles.avatar}/>
-    : 
-    <img src={props.src} alt="user profile picture"/>
-
+    <img src={src} 
+        alt="user profile picture" 
+        className={hasBorder?styles.avatarWithBorder:styles.avatar}
+    />
    );
 }

@@ -1,4 +1,4 @@
-.avatar{
+.avatarWithBorder{
     /* box-sizing:initial; */
     width: calc(3rem + 12px);
     height:calc(3rem + 12px);
@@ -6,5 +6,10 @@
     outline: 2px solid var(--green-500);
     border-radius: 8px;
 
+}
 
+.avatar{
+    width:3rem;
+    height:3rem;
+    border-radius:8px;
 }
