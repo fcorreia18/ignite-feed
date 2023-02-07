@@ -1,5 +1,5 @@
 import styles from "./Post.module.css"
-import {Comment} from "./Comment"
+import { Comment } from "./Comment"
 import { Avatar } from "./Avatar"
 interface PostProps {
     author: string
@@ -55,11 +55,11 @@ export const Post: React.FC<PostProps> = ({ author, content }) => {
                         <button type="submit">comentar</button>
                     </footer>
                 </form>
-            <div className={styles.commentList}>
-                <Comment/>
-                <Comment/>
-                <Comment/>
-            </div>
+                <div className={styles.commentList}>
+                    <Comment />
+                    <Comment />
+                    <Comment />
+                </div>
             </article>
         </div>
 

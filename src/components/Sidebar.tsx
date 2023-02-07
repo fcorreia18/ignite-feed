@@ -22,7 +22,7 @@ export const Sidebar: React.FC = () => {
             </div>
             <footer>
                 <a href="#">
-                    <PencilLine height={30} width={20}/>
+                    <PencilLine size={24}/>
                     Editar seu perfil
                 </a>
             </footer>
