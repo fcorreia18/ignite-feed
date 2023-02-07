@@ -2,11 +2,16 @@ import styles from "./Post.module.css"
 import { Comment } from "./Comment"
 import { Avatar } from "./Avatar"
 interface PostProps {
-    author: string
-    content: string
+    author: {
+        avatarURL:string;
+        name:string;
+        role:string
+    }
+    content: string[],
+    publishedAt: Date;
 }
 
-export const Post: React.FC<PostProps> = ({ author, content }) => {
+export const Post: React.FC<PostProps> = ({ author, content, publishedAt }) => {
     return (
         <div className={styles.wrapper}>
             <article>
@@ -14,23 +19,23 @@ export const Post: React.FC<PostProps> = ({ author, content }) => {
                     <div className={styles.author}>
                         <Avatar
                             hasBorder={true}
-                            src={`https://avatars.githubusercontent.com/u/61621625?v=4`}
+                            src={author.avatarURL}//`https://avatars.githubusercontent.com/u/61621625?v=4`
                         />
                         <div>
                             <strong>
-                                {author}
+                                {author.name}
                             </strong>
                             <span>
-                                Full Stack Developer
+                            {author.role}
                             </span>
                         </div>
                     </div>
                     <time title="07 de fevereiro às 10:10h" dateTime="2023-02-07 10:10">
-                        publicado há 1h
+                    {publishedAt.getDate()}
                     </time>
                 </header>
                 <div className={styles.content}>
-                    <p>
+                    {/* <p>
                         Fala galeraa 👋
                     </p>
                     <p>
@@ -43,7 +48,8 @@ export const Post: React.FC<PostProps> = ({ author, content }) => {
                         <a href="#">#novoprojeto&nbsp; </a>
                         <a href="#">#nlw &nbsp;</a>
                         <a href="#">#rocketseat</a>
-                    </p>
+                    </p> */}
+                    {content}
                 </div>
 
                 <form className={styles.commentForm}>
