@@ -4,17 +4,20 @@ import { Avatar } from "./Avatar"
 import { format, formatDistanceToNow } from "date-fns";
 import PT from "date-fns/locale/pt"
 import { ChangeEvent, FormEvent, FormEventHandler, useState } from "react";
+
+interface Author{
+    avatarUrl:string;
+    name:string;
+    role:string
+}
+interface Content{
+    type:"paragraph"|"link",
+    content:string;
+}
 export interface PostProps {
     id?:number,
-    author: {
-        avatarUrl:string;
-        name:string;
-        role:string
-    },
-    content: {
-        type:string,
-        content:string;
-    }[]
+    author: Author,
+    content: Content[]
     publishedAt: Date;
 }
 export const Post: React.FC<PostProps> = ({ author, content, publishedAt }) => {
@@ -33,8 +36,8 @@ export const Post: React.FC<PostProps> = ({ author, content, publishedAt }) => {
     function handleNewCommentText(event: ChangeEvent<HTMLTextAreaElement>) {
         setNewCommentText(event.target.value)
     }
-    function deleteComment(content:string){
-        const commentsWithoutDeletedOne = comments.filter(comment => comment !== content);
+    function deleteComment(commentToDelete:string){
+        const commentsWithoutDeletedOne = comments.filter(comment => comment !== commentToDelete);
         setComments(commentsWithoutDeletedOne);
     }
 

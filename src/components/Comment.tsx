@@ -4,7 +4,7 @@ import styles from './Comment.module.css';
 import { Avatar } from './Avatar';
 interface Comment{
     content:string
-    onDeleteComment(content:string):void
+    onDeleteComment:(comment:string) => void
 }
 export const Comment: React.FC<Comment> = ({content, onDeleteComment}) => {
     function handleDeleteComment(){
@@ -12,7 +12,9 @@ export const Comment: React.FC<Comment> = ({content, onDeleteComment}) => {
     }
     const [commentLikes, setCommentLikes] = useState<number>(0);
     function handleCommentLikes(){
-        setCommentLikes(commentLikes + 1)
+        setCommentLikes((likes)=>{
+            return likes + 1
+        })
     }
     return (
         <div className={styles.comment}>

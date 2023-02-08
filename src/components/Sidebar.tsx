@@ -9,9 +9,11 @@ export const Sidebar: React.FC = () => {
         <aside className={styles.sidebar}>
             <img src={profileBackground} alt="profile background image" className={styles.cover} />
             <div className={styles.profile} >
-                <Avatar 
+                <Avatar
                     hasBorder={true}
                     src={`https://avatars.githubusercontent.com/u/61621625?v=4`}
+                    alt="user profile picture"
+
                 />
                 <strong>
                     Francisco
@@ -22,7 +24,7 @@ export const Sidebar: React.FC = () => {
             </div>
             <footer>
                 <a href="#">
-                    <PencilLine size={24}/>
+                    <PencilLine size={24} />
                     Editar seu perfil
                 </a>
             </footer>
