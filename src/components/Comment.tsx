@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Trash, ThumbsUp } from "phosphor-react";
 import styles from './Comment.module.css';
 import { Avatar } from './Avatar';
@@ -9,6 +9,10 @@ interface Comment{
 export const Comment: React.FC<Comment> = ({content, onDeleteComment}) => {
     function handleDeleteComment(){
         onDeleteComment(content);
+    }
+    const [commentLikes, setCommentLikes] = useState<number>(0);
+    function handleCommentLikes(){
+        setCommentLikes(commentLikes + 1)
     }
     return (
         <div className={styles.comment}>
@@ -35,9 +39,9 @@ export const Comment: React.FC<Comment> = ({content, onDeleteComment}) => {
                     <p>{content}</p>
                 </div>
                 <footer>
-                    <button>
+                    <button onClick={handleCommentLikes}>
                         <ThumbsUp />
-                        Aplaudir <span>20</span>
+                        Aplaudir <span>{commentLikes}</span>
                     </button>
                 </footer>
             </div>
