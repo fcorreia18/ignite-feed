@@ -4,8 +4,10 @@ import styles from './Comment.module.css';
 import { Avatar } from './Avatar';
 interface Comment{
     content:string
+    onDeleteComment(content:string):void
 }
-export const Comment: React.FC<Comment> = ({content}) => {
+export const Comment: React.FC<Comment> = ({content, onDeleteComment}) => {
+    onDeleteComment(content);
     return (
         <div className={styles.comment}>
             <Avatar 

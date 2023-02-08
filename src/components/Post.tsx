@@ -24,13 +24,17 @@ export const Post: React.FC<PostProps> = ({ author, content, publishedAt }) => {
     
     const [comments, setComments] = useState(["Muito bom, parabéns!!"])
     const [newCommentText, setNewCommentText] = useState("")
+
     function handleCreateNewComment(event:FormEvent<HTMLFormElement>){
         event.preventDefault();
         setComments([...comments, newCommentText])
         setNewCommentText("");
     }
+
     function handleNewCommentText(event: ChangeEvent<HTMLTextAreaElement>) {
         setNewCommentText(event.target.value)
+    }
+    function deleteComment(content:string){
     }
     return (
 
@@ -57,8 +61,8 @@ export const Post: React.FC<PostProps> = ({ author, content, publishedAt }) => {
                 </header>
                 <div className={styles.content}>
                     {
-                    content.map((line)=>{
-                        return line.type ==="paragraph"? <p>{line.content}</p> : <a href="#"> {line.content} </a>
+                    content.map(line=>{
+                        return line.type ==="paragraph"? <p key={line.content}>{line.content}</p> : <a href="#" key={line.content}> {line.content} </a>
                     })
                 }
                 </div>
@@ -78,7 +82,13 @@ export const Post: React.FC<PostProps> = ({ author, content, publishedAt }) => {
                     </footer>
                 </form>
                 <div className={styles.commentList}>
-                   {comments?.map(content=> <Comment content={content} />)}
+                   {comments?.map((content)=> {
+                   return <Comment 
+                        key={content} 
+                        content={content} 
+                        onDeleteComment={deleteComment}
+                   />
+                   })}
                 </div>
             </article>
         </div>
