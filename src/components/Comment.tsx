@@ -2,8 +2,10 @@ import React from 'react';
 import { Trash, ThumbsUp } from "phosphor-react";
 import styles from './Comment.module.css';
 import { Avatar } from './Avatar';
-
-export const Comment: React.FC = () => {
+interface Comment{
+    content:string
+}
+export const Comment: React.FC<Comment> = ({content}) => {
     return (
         <div className={styles.comment}>
             <Avatar 
@@ -26,7 +28,7 @@ export const Comment: React.FC = () => {
                         </button>
                     </header>
 
-                    <p>Muito bom, parabéns!!</p>
+                    <p>{content}</p>
                 </div>
                 <footer>
                     <button>
