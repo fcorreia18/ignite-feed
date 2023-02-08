@@ -30,7 +30,6 @@ export const Post: React.FC<PostProps> = ({ author, content, publishedAt }) => {
         setComments([...comments, newCommentText])
         setNewCommentText("");
     }
-
     function handleNewCommentText(event: ChangeEvent<HTMLTextAreaElement>) {
         setNewCommentText(event.target.value)
     }
@@ -38,6 +37,8 @@ export const Post: React.FC<PostProps> = ({ author, content, publishedAt }) => {
         const commentsWithoutDeletedOne = comments.filter(comment => comment !== content);
         setComments(commentsWithoutDeletedOne);
     }
+
+    const isNewCommentEmpty = newCommentText.length === 0;
     return (
 
         <div className={styles.wrapper}>
@@ -77,10 +78,11 @@ export const Post: React.FC<PostProps> = ({ author, content, publishedAt }) => {
                     placeholder="Deixe um comentário" 
                     value={newCommentText}
                     onChange={handleNewCommentText}
+                    required
                     />
 
                     <footer>
-                        <button type="submit">comentar</button>
+                        <button type="submit" disabled={isNewCommentEmpty}>comentar</button>
                     </footer>
                 </form>
                 <div className={styles.commentList}>
