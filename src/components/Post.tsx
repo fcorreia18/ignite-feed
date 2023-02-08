@@ -35,6 +35,8 @@ export const Post: React.FC<PostProps> = ({ author, content, publishedAt }) => {
         setNewCommentText(event.target.value)
     }
     function deleteComment(content:string){
+        const commentsWithoutDeletedOne = comments.filter(comment => comment !== content);
+        setComments(commentsWithoutDeletedOne);
     }
     return (
 

@@ -7,7 +7,9 @@ interface Comment{
     onDeleteComment(content:string):void
 }
 export const Comment: React.FC<Comment> = ({content, onDeleteComment}) => {
-    onDeleteComment(content);
+    function handleDeleteComment(){
+        onDeleteComment(content);
+    }
     return (
         <div className={styles.comment}>
             <Avatar 
@@ -25,7 +27,7 @@ export const Comment: React.FC<Comment> = ({content, onDeleteComment}) => {
                                 cerca de 1h atrás
                             </time>
                         </div>
-                        <button title='Deletar comentário'>
+                        <button title='Deletar comentário' onClick={handleDeleteComment}>
                             <Trash size={24} />
                         </button>
                     </header>
